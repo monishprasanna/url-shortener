@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>HAS_URL // MAKE IT SHORT</title>
+  <meta name="description" content="A minimalist, high-performance URL shortener built on Cloudflare Pages, Workers, and KV.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <!-- Outfit for UI, Space Mono for Terminal/Hacker elements -->
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;700;900&family=Space+Mono:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <!-- Grid Background overlay -->
+  <div class="grid-overlay"></div>
+  <div class="scanline"></div>
+
+  <div class="container">
+    <!-- Main Content Area -->
+    <main class="main-content">
+      <header class="logo-area">
+        <div class="sys-status">
+          <span class="status-dot online"></span>
+          <span class="status-text">SYS_STATUS: ACTIVE</span>
+        </div>
+        <div class="brand">HAS_URL</div>
+        <h1 class="main-heading">
+          <span class="glow-text">MAKE IT</span><br>
+          <span class="dim-text">SHORT.</span>
+        </h1>
+      </header>
+
+      <!-- URL Form -->
+      <section class="form-section">
+        <form id="shorten-form" novalidate>
+          <div class="input-group">
+            <label for="long-url" class="input-label">TARGET_DESTINATION</label>
+            <div class="input-wrapper">
+              <input 
+                type="url" 
+                id="long-url" 
+                placeholder="Paste Long URL (https://...)" 
+                required 
+                autocomplete="off"
+              >
+              <div class="input-glow"></div>
+            </div>
+          </div>
+
+          <div class="input-group alias-group">
+            <label for="custom-alias" class="input-label">CUSTOM_ALIAS (OPTIONAL)</label>
+            <div class="input-wrapper alias-wrapper">
+              <span class="alias-prefix">/</span>
+              <input 
+                type="text" 
+                id="custom-alias" 
+                placeholder="e.g. github" 
+                autocomplete="off"
+                maxlength="30"
+              >
+              <div class="input-glow"></div>
+            </div>
+          </div>
+
+          <button type="submit" id="submit-btn">
+            <span class="btn-text">SHORTEN URL</span>
+            <span class="btn-scan"></span>
+          </button>
+        </form>
+      </section>
+
+      <!-- Result Card (Initially hidden) -->
+      <section id="result-section" class="result-section hidden">
+        <div class="terminal-card">
+          <div class="card-header">
+            <span class="card-title">GENERATED_LINK</span>
+            <span class="card-close"></span>
+          </div>
+          <div class="card-body">
+            <div class="result-link-container">
+              <a href="#" id="shortened-link" target="_blank" class="short-link-anchor">yourdomain.app/xyz123</a>
+            </div>
+            <button id="copy-btn" class="copy-button">
+              <span class="copy-btn-text">COPY TO CLIPBOARD</span>
+            </button>
+          </div>
+        </div>
+      </section>
+
+      <!-- Toast Notification -->
+      <div id="toast" class="toast hidden">COPIED TO CLIPBOARD</div>
+    </main>
+
+    <!-- Side Terminal Log Area -->
+    <aside class="terminal-log">
+      <div class="terminal-header">
+        <span class="terminal-dot"></span>
+        <span class="terminal-dot"></span>
+        <span class="terminal-dot"></span>
+        <span class="terminal-title">SYSTEM_LOG // RECENT_REDIRECTIONS</span>
+        <button id="refresh-btn" class="refresh-button" title="Refresh logs">
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M21.5 2v6h-6M21.34 15.57a10 10 0 1 1-.57-8.38l5.67-5.67"/>
+          </svg>
+        </button>
+      </div>
+      <div class="terminal-body" id="log-list">
+        <!-- Logs dynamically injected here -->
+        <div class="log-row placeholder-row">
+          <span class="log-col text-dim">FETCHING LOGS...</span>
+        </div>
+      </div>
+    </aside>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
