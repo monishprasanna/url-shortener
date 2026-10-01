@@ -1,4 +1,4 @@
-name = "hass"
+name = "my-worker"
 pages_build_output_dir = "frontend"
 compatibility_date = "2024-03-01"
 
