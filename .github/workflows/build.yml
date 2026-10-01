@@ -14,12 +14,12 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout Code
-        uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
+        uses: actions/checkout@v4
         with:
           fetch-depth: 0 # Full history required for accurate blame & quality gate metrics
 
       - name: Setup Node.js (Optional for running tests/coverage)
-        uses: actions/setup-node@39370e3970a6d050c08020d0f5076f592667104d # v4.1.0
+        uses: actions/setup-node@v4
         with:
           node-version: 18
 
@@ -28,13 +28,13 @@ jobs:
       # - run: npm test -- --coverage
 
       - name: SonarQube Scan
-        uses: SonarSource/sonarqube-scan-action@53c2140409a1e053f191b356bb57be4949ef9ee2 # v2.0.2
+        uses: SonarSource/sonarqube-scan-action@v2
         env:
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
           SONAR_HOST_URL: ${{ secrets.SONAR_HOST_URL }}
 
       - name: Check Quality Gate
-        uses: SonarSource/sonarqube-quality-gate-action@d304ab41ca7db73656c07aa887c2f6d21e1a5332 # v1.1.0
+        uses: SonarSource/sonarqube-quality-gate-action@v1
         timeout-minutes: 5
         env:
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
